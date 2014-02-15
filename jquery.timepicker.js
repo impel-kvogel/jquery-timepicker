@@ -352,7 +352,7 @@ requires jQuery 1.7+
 		}
 
 		if (settings.noneOption) {
-			var defaultLabel = (settings.useSelect) ? 'Time...' : 'None';
+			var defaultLabel = (settings.useSelect) ? 'Time...' : 'Closed';
 			var label = (typeof settings.noneOption == 'string') ? settings.noneOption : defaultLabel;
 			if (settings.useSelect) {
 				list.append($('<option value="">'+label+'</option>'));
@@ -834,9 +834,12 @@ requires jQuery 1.7+
 			_setSelected(self, list);
 		}
 
-		if (timeValue !== null) {
+		if (timeValue != null) {
 			var timeString = _int2time(timeValue, settings.timeFormat);
 			_setTimeValue(self, timeString, 'select');
+		}
+		else {
+            _setTimeValue(self, 'Closed', 'select');
 		}
 
 		//self.trigger('change').trigger('selectTime');
